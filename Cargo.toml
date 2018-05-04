@@ -1,0 +1,11 @@
+[package]
+name = "openrtb"
+version = "0.1.0"
+authors = ["Tim Cheeseman <tcheeseman@appnexus.com>"]
+
+[dependencies]
+phf = "0.7"
+phf_macros = "0.7"
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
