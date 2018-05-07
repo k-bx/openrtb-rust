@@ -5,14 +5,14 @@ pub type Ext = serde_json::Value;
 
 pub fn bool_to_u8<S>(x: &bool, serializer: S) -> Result<S::Ok, S::Error>
 where
-    S: serde::Serializer
+    S: serde::Serializer,
 {
     serializer.serialize_u8(*x as u8)
 }
 
 pub fn u8_to_bool<'de, D>(deserializer: D) -> Result<bool, D::Error>
 where
-    D: serde::Deserializer<'de>
+    D: serde::Deserializer<'de>,
 {
     match serde::Deserialize::deserialize(deserializer) {
         Ok(0) => Ok(false),
@@ -22,6 +22,10 @@ where
     }
 }
 
-pub fn default_false() -> bool { false }
+pub fn default_false() -> bool {
+    false
+}
 
-pub fn is_false(x: &bool) -> bool { !*x }
+pub fn is_false(x: &bool) -> bool {
+    !*x
+}

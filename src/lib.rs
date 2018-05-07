@@ -1,4 +1,6 @@
+#![feature(extern_prelude)]
 #![feature(plugin)]
+#![feature(try_from)]
 #![plugin(phf_macros)]
 
 extern crate phf;
@@ -9,10 +11,12 @@ extern crate serde_derive;
 extern crate serde;
 extern crate serde_json;
 
+#[macro_use]
+mod macros;
 mod serde_utils;
 
-pub mod v2_5;
 pub mod native;
+pub mod v2_5;
 
 pub use v2_5 as current;
 

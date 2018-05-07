@@ -1,6 +1,8 @@
+mod ad_position;
 mod app;
 mod audio;
 mod banner;
+mod banner_ad_type;
 mod bid_request;
 mod category;
 mod device;
@@ -14,9 +16,11 @@ mod source;
 mod user;
 mod video;
 
+pub use self::ad_position::*;
 pub use self::app::*;
 pub use self::audio::*;
 pub use self::banner::*;
+pub use self::banner_ad_type::*;
 pub use self::bid_request::*;
 pub use self::category::*;
 pub use self::device::*;
