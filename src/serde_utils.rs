@@ -16,7 +16,7 @@ where
 {
     match serde::Deserialize::deserialize(deserializer) {
         Ok(0) => Ok(false),
-        Ok(1) => Ok(false),
+        Ok(1) => Ok(true),
         Ok(_) => Err(serde::de::Error::custom("The number is neither 1 nor 0")),
         Err(e) => Err(e),
     }
