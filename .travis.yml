@@ -1,0 +1,10 @@
+language: rust
+
+rust:
+  - nightly
+
+cache:
+  - cargo: true
+  - directories:
+      - target/debug/deps
+      - target/debug/build
