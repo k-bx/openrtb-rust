@@ -41,32 +41,32 @@ pub enum AuctionType {
 #[derive(Serialize, Deserialize, Debug)]
 pub struct BidRequest {
     // Required. Unique ID of the bid request, provided by the exchange.
-    id: String,
+    pub id: String,
 
     // Required. Array of Imp objects (Section 3.2.4) representing the
     // impressions offered. At least 1 Imp object is required.
-    imp: Vec<Imp>,
+    pub imp: Vec<Imp>,
 
     // Details via a Site object (Section 3.2.13) about the publisher's
     // website. Only applicable and recommended for websites.
     #[serde(skip_serializing_if = "Option::is_none")]
-    site: Option<Site>,
+    pub site: Option<Site>,
 
     // Details via an App object (Section 3.2.14) about the publisher's
     // app (i.e., non-browser applications). Only applicable and
     // recommended for apps.
     #[serde(skip_serializing_if = "Option::is_none")]
-    app: Option<App>,
+    pub app: Option<App>,
 
     // Details via a Device object (Section 3.2.18) about the user's
     // device to which the impression will be delivered.
     #[serde(skip_serializing_if = "Option::is_none")]
-    device: Option<Device>,
+    pub device: Option<Device>,
 
     // Details via a User object (Section 3.2.20) about the human
     // user of the device; the advertising audience.
     #[serde(skip_serializing_if = "Option::is_none")]
-    user: Option<User>,
+    pub user: Option<User>,
 
     // Indicator of test mode in which auctions are not billable,
     // where 0 = live mode, 1 = test mode. Default to false.
@@ -76,18 +76,18 @@ pub struct BidRequest {
         serialize_with = "serde_utils::bool_to_u8",
         deserialize_with = "serde_utils::u8_to_bool"
     )]
-    test: bool,
+    pub test: bool,
 
     // Auction type, where 1 = First Price, 2 = Second Price Plus.
     // Exchange-specific auction types can be defined using values
     // greater than 500.
     #[serde(rename = "at")]
-    auction_type: AuctionType,
+    pub auction_type: AuctionType,
 
     // Maximum time in milliseconds the exchange allows for bids to
     // be received including Internet latency to avoid timeout. This
     // value supersedes any a priori guidance from the exchange.
-    tmax: u64,
+    pub tmax: u64,
 
     // White list of buyer seats (e.g., advertisers, agencies) allowed
     // to bid on this impression. IDs of seats and knowledge of the
@@ -96,7 +96,7 @@ pub struct BidRequest {
     // of wseat and bseat should be used in the same request.
     // Omission of both implies no seat restrictions.
     #[serde(rename = "wseat", default, skip_serializing_if = "Vec::is_empty")]
-    seat_whitelist: Vec<String>,
+    pub seat_whitelist: Vec<String>,
 
     // Block list of buyer seats (e.g., advertisers, agencies) restricted
     // from bidding on this impression. IDs of seats and knowledge
@@ -105,7 +105,7 @@ pub struct BidRequest {
     // most, only one of wseat and bseat should be used in the
     // same request. Omission of both implies no seat restrictions
     #[serde(rename = "bseat", default, skip_serializing_if = "Vec::is_empty")]
-    seat_blocklist: Vec<String>,
+    pub seat_blocklist: Vec<String>,
 
     // Flag to indicate if Exchange can verify that the impressions
     // offered represent all of the impressions available in context
@@ -119,50 +119,50 @@ pub struct BidRequest {
         serialize_with = "serde_utils::bool_to_u8",
         deserialize_with = "serde_utils::u8_to_bool"
     )]
-    all_imps: bool,
+    pub all_imps: bool,
 
     // Array of allowed currencies for bids on this bid request using
     // ISO-4217 alpha codes. Recommended only if the exchange
     // accepts multiple currencies.
     #[serde(rename = "cur", default, skip_serializing_if = "Vec::is_empty")]
-    currency: Vec<String>,
+    pub currency: Vec<String>,
 
     // White list of languages for creatives using ISO-639-1-alpha-2.
     // Omission implies no specific restrictions, but buyers would be
     // advised to consider language attribute in the Device and/or
     // Content objects if available.
     #[serde(rename = "wlang", default, skip_serializing_if = "Vec::is_empty")]
-    language_whitelist: Vec<String>,
+    pub language_whitelist: Vec<String>,
 
     // Blocked advertiser categories using the IAB content
     // categories. Refer to List 5.1.
     #[serde(rename = "bcat", default, skip_serializing_if = "Vec::is_empty")]
-    category_blocklist: Vec<Category>,
+    pub category_blocklist: Vec<Category>,
 
     // Block list of advertisers by their domains (e.g., “ford.com”).
     #[serde(rename = "badv", default, skip_serializing_if = "Vec::is_empty")]
-    advertiser_blocklist: Vec<String>,
+    pub advertiser_blocklist: Vec<String>,
 
     // Block list of applications by their platform-specific exchange-independent
     // application identifiers. On Android, these should
     //be bundle or package names (e.g., com.foo.mygame). On iOS,
     // these are numeric IDs.
     #[serde(rename = "bapp", default, skip_serializing_if = "Vec::is_empty")]
-    app_blocklist: Vec<String>,
+    pub app_blocklist: Vec<String>,
 
     // A Source object (Section 3.2.2) that provides data about the
     // inventory source and which entity makes the final decision.
     #[serde(skip_serializing_if = "Option::is_none")]
-    source: Option<Source>,
+    pub source: Option<Source>,
 
     // A Regs object (Section 3.2.3) that specifies any industry, legal,
     // or governmental regulations in force for this request.
     #[serde(rename = "regs", skip_serializing_if = "Option::is_none")]
-    regulations: Option<Regulations>,
+    pub regulations: Option<Regulations>,
 
     // Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    ext: Option<serde_utils::Ext>,
+    pub ext: Option<serde_utils::Ext>,
 }
 
 impl BidRequest {
