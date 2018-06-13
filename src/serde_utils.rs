@@ -9,7 +9,7 @@
 use serde;
 use serde_json;
 
-pub type Ext = serde_json::Value;
+pub type Ext = serde_json::map::Map<String, serde_json::value::Value>;
 
 pub fn bool_to_u8<S>(x: &bool, serializer: S) -> Result<S::Ok, S::Error>
 where
