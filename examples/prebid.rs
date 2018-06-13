@@ -1,16 +1,11 @@
-[![Travis Build Status](https://travis-ci.org/cirla/openrtb-rust.svg?branch=master)](https://travis-ci.org/cirla/openrtb-rust)
-[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/5c0e9s5odn97budy?svg=true)](https://ci.appveyor.com/project/cirla/openrtb-rust)
-[![crates.io](https://img.shields.io/crates/v/openrtb.svg)](https://crates.io/crates/openrtb)
-[![docs.rs](https://docs.rs/openrtb/badge.svg)](https://docs.rs/openrtb)
+// Copyright (c) 2018 The openrtb-rust authors
+//
+// Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
+// <LICENSE-MIT or http://opensource.org/licenses/MIT>, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
 
-# openrtb
-
-OpenRTB v2.5 and OpenRTB Dynamic Native Ads v1.2 types for rust.
-Handles (de)serialization to/from JSON.
-
-## Example
-
-```rust
 extern crate openrtb;
 extern crate reqwest;
 
@@ -44,4 +39,3 @@ fn main() -> Result<(), Box<Error>> {
 
     Ok(())
 }
-```

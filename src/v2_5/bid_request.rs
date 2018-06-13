@@ -166,6 +166,31 @@ pub struct BidRequest {
 }
 
 impl BidRequest {
+    pub fn new(id: String) -> BidRequest {
+        BidRequest {
+            id: id,
+            imp: vec![],
+            site: None,
+            app: None,
+            device: None,
+            user: None,
+            test: false,
+            auction_type: AuctionType::FirstPrice,
+            tmax: 0,
+            seat_whitelist: vec![],
+            seat_blocklist: vec![],
+            all_imps: false,
+            currency: vec![],
+            language_whitelist: vec![],
+            category_blocklist: vec![],
+            advertiser_blocklist: vec![],
+            app_blocklist: vec![],
+            source: None,
+            regulations: None,
+            ext: None,
+        }
+    }
+
     pub fn validate(&self) -> bool {
         self.imp.len() > 0
     }
