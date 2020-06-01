@@ -18,28 +18,28 @@ use serde_utils;
 pub struct Format {
     // Width in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    w: Option<u32>,
+    pub w: Option<u32>,
 
     // Height in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
-    h: Option<u32>,
+    pub h: Option<u32>,
 
     // Relative width when expressing size as a ratio.
     #[serde(rename = "wratio", skip_serializing_if = "Option::is_none")]
-    w_ratio: Option<u32>,
+    pub w_ratio: Option<u32>,
 
     // Relative height when expressing size as a ratio
     #[serde(rename = "hratio", skip_serializing_if = "Option::is_none")]
-    h_ratio: Option<u32>,
+    pub h_ratio: Option<u32>,
 
     // The minimum width in device independent pixels (DIPS) at
     // which the ad will be displayed the size is expressed as a ratio.
     #[serde(rename = "w_min", skip_serializing_if = "Option::is_none")]
-    w_min: Option<u32>,
+    pub w_min: Option<u32>,
 
     // Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
-    ext: Option<serde_utils::Ext>,
+    pub ext: Option<serde_utils::Ext>,
 }
 
 #[cfg(test)]

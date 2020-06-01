@@ -17,31 +17,31 @@ use super::video::Video;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Imp {
-    id: String,
+    pub id: String,
 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    metric: Vec<Metric>,
+    pub metric: Vec<Metric>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    banner: Option<Banner>,
+    pub banner: Option<Banner>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    video: Option<Video>,
+    pub video: Option<Video>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    audio: Option<Audio>,
+    pub audio: Option<Audio>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    native: Option<Native>,
+    pub native: Option<Native>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    pmp: Option<PMP>,
+    pub pmp: Option<PMP>,
 
     #[serde(rename = "displaymanager", skip_serializing_if = "Option::is_none")]
-    display_manager: Option<String>,
+    pub display_manager: Option<String>,
 
     #[serde(rename = "displaymanagerver", skip_serializing_if = "Option::is_none")]
-    display_manager_ver: Option<String>,
+    pub display_manager_ver: Option<String>,
 
     #[serde(
         rename = "instl",
@@ -49,13 +49,13 @@ pub struct Imp {
         serialize_with = "serde_utils::bool_to_u8",
         deserialize_with = "serde_utils::u8_to_bool"
     )]
-    interstitial: bool,
+    pub interstitial: bool,
 
     #[serde(rename = "tagid", skip_serializing_if = "Option::is_none")]
-    tag_id: Option<String>,
+    pub tag_id: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    ext: Option<serde_utils::Ext>,
+    pub ext: Option<serde_utils::Ext>,
 }
 
 #[cfg(test)]

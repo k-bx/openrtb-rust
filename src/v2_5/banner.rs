@@ -31,21 +31,21 @@ pub struct Banner {
     // banner sizes permitted. If none are specified, then use of the
     // h and w attributes is highly recommended.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    format: Vec<Format>,
+    pub format: Vec<Format>,
 
     // Exact width in device independent pixels (DIPS);
     // recommended if no format objects are specified.
     #[serde(skip_serializing_if = "Option::is_none")]
-    w: Option<u32>,
+    pub w: Option<u32>,
 
     // Exact height in device independent pixels (DIPS);
     // recommended if no format objects are specified.
     #[serde(skip_serializing_if = "Option::is_none")]
-    h: Option<u32>,
+    pub h: Option<u32>,
 
     // Blocked banner ad types. Refer to List 5.2.
-    btype: Vec<BannerAdType>,
+    pub btype: Vec<BannerAdType>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    ext: Option<serde_utils::Ext>,
+    pub ext: Option<serde_utils::Ext>,
 }
