@@ -54,6 +54,30 @@ pub struct Imp {
     #[serde(rename = "tagid", skip_serializing_if = "Option::is_none")]
     pub tag_id: Option<String>,
 
+    #[serde(rename = "bidfloor", skip_serializing_if = "Option::is_none")]
+    pub bid_floor: Option<f32>,
+
+    #[serde(rename = "bidfloorcur", skip_serializing_if = "Option::is_none")]
+    pub bid_floor_cur: Option<String>,
+
+    // TODO: add properly
+    // #[serde(
+    //     rename = "clickbrowser",
+    //     skip_serializing_if = "serde_utils::is_false",
+    //     serialize_with = "serde_utils::bool_to_u8",
+    //     deserialize_with = "serde_utils::u8_to_bool"
+    // )]
+    // pub click_browser: Option<bool>,
+
+    // TODO: add properly
+    // secure: bool,
+
+    // TODO: add properly
+    // iframebuster
+
+    // TODO: add properly
+    // exp
+
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_utils::Ext>,
 }
