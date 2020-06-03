@@ -68,16 +68,19 @@ pub struct Imp {
     //     deserialize_with = "serde_utils::u8_to_bool"
     // )]
     // pub click_browser: Option<bool>,
-
-    // TODO: add properly
-    // secure: bool,
+    #[serde(
+        rename = "bidfloorcur",
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "serde_utils::mbool_to_u8",
+        deserialize_with = "serde_utils::u8_to_mbool"
+    )]
+    secure: Option<bool>,
 
     // TODO: add properly
     // iframebuster
 
     // TODO: add properly
     // exp
-
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_utils::Ext>,
 }
@@ -101,6 +104,9 @@ mod tests {
             display_manager_ver: None,
             interstitial: false,
             tag_id: None,
+            bid_floor: None,
+            bid_floor_cur: None,
+            secure: None,
             ext: None,
         };
 

@@ -37,3 +37,25 @@ pub fn default_false() -> bool {
 pub fn is_false(x: &bool) -> bool {
     !*x
 }
+
+pub fn mbool_to_u8<S>(mx: &Option<bool>, serializer: S) -> Result<S::Ok, S::Error>
+where
+    S: serde::Serializer,
+{
+    match mx {
+        None => serializer.serialize_none(),
+        Some(x) => bool_to_u8(x, serializer),
+    }
+}
+
+pub fn u8_to_mbool<'de, D>(deserializer: D) -> Result<Option<bool>, D::Error>
+where
+    D: serde::Deserializer<'de>,
+{
+    match serde::Deserialize::deserialize(deserializer) {
+        Ok(0) => Ok(Some(false)),
+        Ok(1) => Ok(Some(true)),
+        Ok(_) => Ok(None),
+        Err(e) => Err(e),
+    }
+}

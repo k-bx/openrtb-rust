@@ -14,22 +14,22 @@ use std::error::Error;
 use openrtb::current::{BidRequest, BidResponse};
 use reqwest::StatusCode;
 
-fn main() -> Result<(), Box<Error>> {
+fn main() -> Result<(), Box<dyn Error>> {
     let id = "f9b54eb8-6f3b-11e8-adc0-fa7ae01bbebc".to_string();
     let req = BidRequest::new(id);
 
-    let client = reqwest::Client::new();
-    let mut res = client
+    let client = reqwest::blocking::Client::new();
+    let res = client
         .post("https://prebid.adnxs.com/pbs/v1/openrtb2/auction")
         .json(&req)
         .send()?;
 
     match res.status() {
-        StatusCode::Ok => {
+        StatusCode::OK => {
             let res: BidResponse = res.json()?;
             println!("Received bids for req {}.", res.id);
         }
-        StatusCode::NoContent => {
+        StatusCode::NO_CONTENT => {
             println!("No bids.");
         }
         _ => {
