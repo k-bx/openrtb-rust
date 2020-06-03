@@ -74,7 +74,7 @@ pub struct Imp {
         serialize_with = "serde_utils::mbool_to_u8",
         deserialize_with = "serde_utils::u8_to_mbool"
     )]
-    secure: Option<bool>,
+    pub secure: Option<bool>,
 
     // TODO: add properly
     // iframebuster

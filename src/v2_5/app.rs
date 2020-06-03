@@ -27,16 +27,16 @@ pub struct App {
     pub store_url: Option<String>,
 
     #[serde(skip_serializing_if = "Vec::is_empty")]
-    cat: Vec<Category>,
+    pub cat: Vec<Category>,
 
     #[serde(rename = "sectioncat", skip_serializing_if = "Vec::is_empty")]
-    section_cat: Vec<Category>,
+    pub section_cat: Vec<Category>,
 
     #[serde(rename = "pagecat", skip_serializing_if = "Vec::is_empty")]
-    page_cat: Vec<Category>,
+    pub page_cat: Vec<Category>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    ver: Option<String>,
+    pub ver: Option<String>,
 
     // TODO: add properly
     // #[serde(rename = "privacypolicy", skip_serializing_if = "Vec::is_empty")]
@@ -45,13 +45,13 @@ pub struct App {
     // TODO: add properly
     // paid:
     #[serde(skip_serializing_if = "Option::is_none")]
-    publisher: Option<Publisher>,
+    pub publisher: Option<Publisher>,
 
     // TODO: add properly
     // #[skip_serializing_if = "Option::is_none"]
     // content: Option<Content>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    keywords: Option<String>,
+    pub keywords: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_utils::Ext>,
