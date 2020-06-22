@@ -9,7 +9,7 @@
 use super::category::Category;
 use serde_utils;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct Publisher {
     pub id: String,
     #[serde(skip_serializing_if = "Option::is_none")]

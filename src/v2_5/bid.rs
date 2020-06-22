@@ -1,7 +1,7 @@
 use super::category::Category;
 use serde_utils;
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct Bid {
     pub id: String,
     #[serde(rename = "impid")]

@@ -21,7 +21,7 @@ use serde_utils;
 // HTTP 204. Alternately if the bidder wishes to convey to the exchange a
 // reason for not bidding, just a BidResponse object is returned with a reason
 // code in the nbr attribute.
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct BidResponse {
     // Required. ID of the bid request to which this is a response.
     pub id: String,

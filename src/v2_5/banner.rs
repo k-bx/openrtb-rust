@@ -25,7 +25,7 @@ use super::format::Format;
 // offered as video, audio, and/or native by also including as Imp subordinates
 // objects of those types. However, any given bid for the impression must
 // conform to one of the offered types.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct Banner {
     // Array of format objects (Section 3.2.10) representing the
     // banner sizes permitted. If none are specified, then use of the

@@ -9,7 +9,7 @@
 use super::geo::Geo;
 use serde_utils;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct Device {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ua: Option<String>,

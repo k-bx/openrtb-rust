@@ -14,7 +14,7 @@ use serde_utils;
 // or Flex Ad parameters for a banner impression. These are typically used in
 // an array where multiple sizes are permitted. It is recommended that either
 // the w/h pair or the wratio/hratio/wmin set (i.e., for Flex Ads) be specified.
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct Format {
     // Width in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]

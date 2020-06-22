@@ -8,7 +8,7 @@
 
 use serde_utils;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct Regulations {
     #[serde(
         skip_serializing_if = "serde_utils::is_false",

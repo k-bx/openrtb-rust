@@ -19,7 +19,7 @@ use super::site::Site;
 use super::source::Source;
 use super::user::User;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum AuctionType {
     FirstPrice,
     SecondPricePlus,
@@ -38,7 +38,7 @@ pub enum AuctionType {
 // recommended, but only one applies to a given bid request depending on whether
 // the media is browser-based web content or a non-browser application,
 // respectively.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct BidRequest {
     // Required. Unique ID of the bid request, provided by the exchange.
     pub id: String,
