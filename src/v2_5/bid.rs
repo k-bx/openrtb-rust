@@ -29,9 +29,9 @@ pub struct Bid {
     pub cr_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tactic: Option<String>,
-    #[serde(skip_serializing_if = "Vec::is_empty")]
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub cat: Vec<Category>,
-    #[serde(skip_serializing_if = "Vec::is_empty")]
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub attr: Vec<u32>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub api: Option<u32>,

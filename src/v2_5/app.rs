@@ -26,20 +26,20 @@ pub struct App {
     #[serde(rename = "storeurl", skip_serializing_if = "Option::is_none")]
     pub store_url: Option<String>,
 
-    #[serde(skip_serializing_if = "Vec::is_empty")]
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub cat: Vec<Category>,
 
-    #[serde(rename = "sectioncat", skip_serializing_if = "Vec::is_empty")]
+    #[serde(rename = "sectioncat", default, skip_serializing_if = "Vec::is_empty")]
     pub section_cat: Vec<Category>,
 
-    #[serde(rename = "pagecat", skip_serializing_if = "Vec::is_empty")]
+    #[serde(rename = "pagecat", default, skip_serializing_if = "Vec::is_empty")]
     pub page_cat: Vec<Category>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ver: Option<String>,
 
     // TODO: add properly
-    // #[serde(rename = "privacypolicy", skip_serializing_if = "Vec::is_empty")]
+    // #[serde(rename = "privacypolicy", default, skip_serializing_if = "Vec::is_empty")]
     // privacy_policy: Option<String>,
 
     // TODO: add properly
@@ -55,4 +55,24 @@ pub struct App {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_utils::Ext>,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json;
+
+    #[test]
+    fn serialization_skip_fields() {
+        let serialized = r#"{
+            "id": "1234"
+        }"#;
+
+        let res = serde_json::from_str(serialized);
+
+        let _: App = match res {
+            Ok(x) => x,
+            Err(e) => panic!("{:?}", e),
+        };
+    }
 }
