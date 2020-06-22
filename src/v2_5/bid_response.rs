@@ -46,6 +46,20 @@ pub struct BidResponse {
     pub ext: Option<serde_utils::Ext>,
 }
 
+impl BidResponse {
+    pub fn new(id: String) -> BidResponse {
+        BidResponse {
+            id: id,
+            seat_bid: vec![],
+            bid_id: None,
+            currency: None,
+            custom_data: None,
+            no_bidding_reason: None,
+            ext: None,
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

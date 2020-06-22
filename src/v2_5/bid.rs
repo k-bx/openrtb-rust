@@ -56,3 +56,37 @@ pub struct Bid {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_utils::Ext>,
 }
+
+impl Bid {
+    pub fn new(id: String, imp_id: String, price: f64) -> Bid {
+        Bid {
+            id: id,
+            imp_id: imp_id,
+            price: price,
+            nurl: None,
+            burl: None,
+            lurl: None,
+            adm: None,
+            adid: None,
+            adomain: None,
+            bundle: None,
+            iurl: None,
+            cid: None,
+            cr_id: None,
+            tactic: None,
+            cat: vec![],
+            attr: vec![],
+            api: None,
+            protocol: None,
+            qagmediarating: None,
+            language: None,
+            deal_id: None,
+            w: None,
+            h: None,
+            wratio: None,
+            hratio: None,
+            exp: None,
+            ext: None,
+        }
+    }
+}
