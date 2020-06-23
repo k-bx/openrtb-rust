@@ -44,6 +44,7 @@ pub struct Banner {
     pub h: Option<u32>,
 
     // Blocked banner ad types. Refer to List 5.2.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub btype: Vec<BannerAdType>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
