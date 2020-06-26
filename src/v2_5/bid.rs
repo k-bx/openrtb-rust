@@ -17,8 +17,8 @@ pub struct Bid {
     pub adm: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub adid: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub adomain: Option<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub adomain: Vec<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bundle: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
