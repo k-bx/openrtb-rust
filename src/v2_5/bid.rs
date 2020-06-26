@@ -68,7 +68,7 @@ impl Bid {
             lurl: None,
             adm: None,
             adid: None,
-            adomain: None,
+            adomain: vec![],
             bundle: None,
             iurl: None,
             cid: None,
