@@ -44,12 +44,13 @@ pub struct Imp {
     pub display_manager_ver: Option<String>,
 
     #[serde(
+        default,
         rename = "instl",
-        skip_serializing_if = "serde_utils::is_false",
-        serialize_with = "serde_utils::bool_to_u8",
-        deserialize_with = "serde_utils::u8_to_bool"
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "serde_utils::mbool_to_u8",
+        deserialize_with = "serde_utils::u8_to_mbool"
     )]
-    pub interstitial: bool,
+    pub interstitial: Option<bool>,
 
     #[serde(rename = "tagid", skip_serializing_if = "Option::is_none")]
     pub tag_id: Option<String>,
@@ -69,7 +70,7 @@ pub struct Imp {
     // )]
     // pub click_browser: Option<bool>,
     #[serde(
-        rename = "bidfloorcur",
+        default,
         skip_serializing_if = "Option::is_none",
         serialize_with = "serde_utils::mbool_to_u8",
         deserialize_with = "serde_utils::u8_to_mbool"
@@ -102,7 +103,7 @@ mod tests {
             pmp: None,
             display_manager: None,
             display_manager_ver: None,
-            interstitial: false,
+            interstitial: None,
             tag_id: None,
             bid_floor: None,
             bid_floor_cur: None,
@@ -114,5 +115,13 @@ mod tests {
         let serialized = serde_json::to_string(&i).unwrap();
 
         assert_eq!(expected, serialized)
+    }
+
+    #[test]
+    fn check_simple() {
+        assert_eq!(
+            serde_json::from_str::<Imp>("{\"id\":\"7a5156a2-50f5-4dea-9eeb-a767f975d500\",\"banner\":{\"w\":300,\"h\":250},\"bidfloor\":0.1}").unwrap().id,
+            "7a5156a2-50f5-4dea-9eeb-a767f975d500",
+        )
     }
 }
