@@ -7,4 +7,9 @@
 // except according to those terms.
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
-pub struct User {}
+pub struct User {
+    #[serde(rename = "buyeruid", skip_serializing_if = "Option::is_none")]
+    buyer_uid: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub id: Option<String>,
+}
