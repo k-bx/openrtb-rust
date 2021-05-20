@@ -156,4 +156,12 @@ pub struct DataResponse {}
 pub struct LinkResponse {}
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
-pub struct EventTrackerResponse {}
+pub struct EventTrackerResponse {
+    pub event: u64,
+    pub method: u64,
+    pub url: Option<String>,
+    #[serde(rename = "customdata", skip_serializing_if = "Option::is_none")]
+    pub custom_data: Option<serde_utils::Ext>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext: Option<serde_utils::Ext>,
+}
