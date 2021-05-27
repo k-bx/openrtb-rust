@@ -114,7 +114,7 @@ pub struct Response {
         skip_serializing_if = "Vec::is_empty"
     )]
     pub event_trackers: Vec<EventTrackerResponse>,
-    pub privacy: Option<String>,
+    pub privacy: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_utils::Ext>,
 }
