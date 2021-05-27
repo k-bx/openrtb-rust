@@ -103,7 +103,7 @@ pub struct Response {
     #[serde(rename = "assetsurl", skip_serializing_if = "Option::is_none")]
     pub assets_url: Option<String>,
     pub dcourl: Option<String>,
-    pub link: String,
+    pub link: DestinationLink,
     #[serde(default, rename = "imptrackers", skip_serializing_if = "Vec::is_empty")]
     pub imp_trackers: Vec<String>,
     #[serde(rename = "jstracker", skip_serializing_if = "Option::is_none")]
@@ -118,6 +118,9 @@ pub struct Response {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_utils::Ext>,
 }
+
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
+pub struct DestinationLink {}
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct AssetResponse {
