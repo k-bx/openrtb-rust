@@ -11,16 +11,16 @@ use serde_utils;
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct Source {
     #[serde(skip_serializing_if = "Option::is_none")]
-    fd: Option<u8>,
+    pub fd: Option<u8>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    tid: Option<String>,
+    pub tid: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    pchain: Option<String>,
+    pub pchain: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    ext: Option<serde_utils::Ext>,
+    pub ext: Option<serde_utils::Ext>,
 }
 
 #[cfg(test)]
