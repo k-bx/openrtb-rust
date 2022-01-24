@@ -27,6 +27,7 @@ mod regulations;
 mod seat_bid;
 mod site;
 mod source;
+mod supply_chain;
 mod user;
 mod video;
 
