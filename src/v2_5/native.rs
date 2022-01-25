@@ -6,5 +6,17 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Native {}
+use serde_utils;
+
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
+pub struct Native {
+    pub request: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ver: Option<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub api: Vec<u64>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub battr: Vec<u64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ext: Option<serde_utils::Ext>,
+}

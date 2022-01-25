@@ -6,5 +6,10 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct User {}
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
+pub struct User {
+    #[serde(rename = "buyeruid", skip_serializing_if = "Option::is_none")]
+    pub buyer_uid: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub id: Option<String>,
+}

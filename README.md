@@ -30,11 +30,11 @@ fn main() -> Result<(), Box<Error>> {
         .send()?;
 
     match res.status() {
-        StatusCode::Ok => {
+        StatusCode::OK => {
             let res: BidResponse = res.json()?;
             println!("Received bids for req {}.", res.id);
         }
-        StatusCode::NoContent => {
+        StatusCode::NO_CONTENT => {
             println!("No bids.");
         }
         _ => {

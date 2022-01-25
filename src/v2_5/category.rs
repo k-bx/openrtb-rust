@@ -8,7 +8,7 @@
 
 use std::str::FromStr;
 
-use phf;
+use phf::{phf_map};
 use serde;
 
 macro_rules! categories {

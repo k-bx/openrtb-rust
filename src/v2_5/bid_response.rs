@@ -6,6 +6,7 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+use super::seat_bid::SeatBid;
 use serde_utils;
 
 // 4.2.1 Object: BidResponse
@@ -20,14 +21,43 @@ use serde_utils;
 // HTTP 204. Alternately if the bidder wishes to convey to the exchange a
 // reason for not bidding, just a BidResponse object is returned with a reason
 // code in the nbr attribute.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct BidResponse {
     // Required. ID of the bid request to which this is a response.
     pub id: String,
 
+    #[serde(rename = "seatbid", default, skip_serializing_if = "Vec::is_empty")]
+    pub seat_bid: Vec<SeatBid>,
+
+    #[serde(rename = "bidid", skip_serializing_if = "Option::is_none")]
+    pub bid_id: Option<String>,
+
+    #[serde(rename = "cur", skip_serializing_if = "Option::is_none")]
+    pub currency: Option<String>,
+
+    #[serde(rename = "customdata", skip_serializing_if = "Option::is_none")]
+    pub custom_data: Option<String>,
+
+    #[serde(rename = "nbr", skip_serializing_if = "Option::is_none")]
+    pub no_bidding_reason: Option<u32>,
+
     // Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_utils::Ext>,
+}
+
+impl BidResponse {
+    pub fn new(id: String) -> BidResponse {
+        BidResponse {
+            id: id,
+            seat_bid: vec![],
+            bid_id: None,
+            currency: None,
+            custom_data: None,
+            no_bidding_reason: None,
+            ext: None,
+        }
+    }
 }
 
 #[cfg(test)]
@@ -39,6 +69,11 @@ mod tests {
     fn serialization_skip_fields() {
         let b = BidResponse {
             id: "1234".to_string(),
+            seat_bid: vec![],
+            bid_id: None,
+            currency: None,
+            custom_data: None,
+            no_bidding_reason: None,
             ext: None,
         };
 
@@ -63,6 +98,11 @@ mod tests {
 
         let expected = BidResponse {
             id: "1234".to_string(),
+            seat_bid: vec![],
+            bid_id: None,
+            currency: None,
+            custom_data: None,
+            no_bidding_reason: None,
             ext: None,
         };
 

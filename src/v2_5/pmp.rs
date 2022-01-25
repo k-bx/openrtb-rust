@@ -6,5 +6,5 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct PMP {}
