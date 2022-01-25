@@ -52,6 +52,7 @@ pub use self::regulations::*;
 pub use self::seat_bid::*;
 pub use self::site::*;
 pub use self::source::*;
+pub use self::supply_chain::*;
 pub use self::user::*;
 pub use self::video::*;
 pub use serde_utils::Ext;
