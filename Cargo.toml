@@ -7,12 +7,12 @@ keywords = ["openrtb"]
 categories = ["encoding"]
 license = "MIT/Apache-2.0"
 documentation = "https://docs.rs/openrtb/"
-homepage = "https://cirla.github.io/openrtb-rust"
-repository = "https://github.com/cirla/openrtb-rust"
+homepage = "https://github.com/k-bx/openrtb-rust"
+repository = "https://github.com/k-bx/openrtb-rust"
 
 [badges]
-travis-ci = { repository = "cirla/openrtb-rust" }
-appveyor = { repository = "cirla/openrtb-rust" }
+travis-ci = { repository = "k-bx/openrtb-rust" }
+appveyor = { repository = "k-bx/openrtb-rust" }
 
 [lib]
 name = "openrtb"
