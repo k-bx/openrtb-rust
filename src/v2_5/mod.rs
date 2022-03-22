@@ -30,6 +30,8 @@ mod source;
 mod supply_chain;
 mod user;
 mod video;
+mod data;
+mod segment;
 
 pub use self::ad_position::*;
 pub use self::app::*;
