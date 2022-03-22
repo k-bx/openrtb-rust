@@ -15,7 +15,7 @@ use serde_utils;
 pub struct Data {
     // The data extension object that contains community extensions.
     #[serde(skip_serializing_if = "Option::is_none")]
-    ext: Option<serde_utils::Ext>,
+    pub ext: Option<serde_utils::Ext>,
     // The unique domain of the business entity who is stating the additional information about the user or content.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
