@@ -6,8 +6,8 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-use serde_utils;
 use super::segment::Segment;
+use serde_utils;
 
 // This object used by publishers to pass additional attributes about the user or content.
 

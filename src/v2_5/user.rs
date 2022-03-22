@@ -6,8 +6,8 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-use serde_utils;
 use super::data::Data;
+use serde_utils;
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct User {
@@ -23,5 +23,4 @@ pub struct User {
     // The Index static identifier for this user (contains only alphanumeric or the following characters: @ - . _ ).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
-
 }

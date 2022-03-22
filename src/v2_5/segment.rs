@@ -6,8 +6,6 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-use serde_utils;
-
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct Segment {
     // The ID that is associated with this data segment and is specific to the data provider.
