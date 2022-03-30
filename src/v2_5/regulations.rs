@@ -15,10 +15,10 @@ pub struct Regulations {
         serialize_with = "serde_utils::bool_to_u8",
         deserialize_with = "serde_utils::u8_to_bool"
     )]
-    coppa: bool,
+    pub coppa: bool,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    ext: Option<serde_utils::Ext>,
+    pub ext: Option<serde_utils::Ext>,
 }
 
 #[cfg(test)]
