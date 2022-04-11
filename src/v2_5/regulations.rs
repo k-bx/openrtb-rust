@@ -17,11 +17,11 @@ pub struct Regulations {
     // Flag indicating if this request is subject to the COPPA
     // regulations established by the USA FTC, where 0 = no, 1 = yes.
     #[serde(
-        skip_serializing_if = "Option::is_none",
-        serialize_with = "serde_utils::mbool_to_u8",
-        deserialize_with = "serde_utils::u8_to_mbool"
+        skip_serializing_if = "serde_utils::is_false",
+        serialize_with = "serde_utils::bool_to_u8",
+        deserialize_with = "serde_utils::u8_to_bool"
     )]
-    pub coppa: Option<bool>,
+    pub coppa: bool,
 
     // Placeholder for exchange-specific extensions to OpenRTB.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -36,7 +36,7 @@ mod tests {
     #[test]
     fn serialization_skip_fields() {
         let r = Regulations {
-            coppa: None,
+            coppa: false,
             ext: None,
         };
 
