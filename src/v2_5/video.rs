@@ -8,7 +8,7 @@ use crate::serde_utils;
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-/// This object represents an in-stream video impression. 
+/// This object represents an in-stream video impression.
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct Video {
     /// Content MIME types supported (e.g., “video/x-ms-wmv”,“video/mp4”).
@@ -40,11 +40,11 @@ pub struct Video {
     /// Maximum bit rate in Kbps.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub maxbitrate: Option<u32>,
-    /// Indicates if letter-boxing of 4:3 content into 
+    /// Indicates if letter-boxing of 4:3 content into
     /// a 16:9 window is allowed, where 0 = no, 1 = yes.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub boxingallowed: Option<u32>,
-    /// Playback methods that may be in use. 
+    /// Playback methods that may be in use.
     /// If none are specified, any method may be used.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub playbackmethod: Vec<u32>,
