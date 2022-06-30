@@ -80,8 +80,11 @@ pub struct Imp {
     // TODO: add properly
     // iframebuster
 
-    // TODO: add properly
-    // exp
+    /// Advisory as to the number of seconds that may elapse
+    /// between the auction and the actual impression.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub exp: Option<u64>,
+
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_utils::Ext>,
 }
