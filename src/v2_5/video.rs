@@ -33,7 +33,7 @@ pub struct Video {
     pub linearity: Option<u32>,
     /// Blocked creative attributes.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub battr: Vec<u32>,
+    pub battr: Vec<u64>,
     /// Minimum bit rate in Kbps.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub minbitrate: Option<u32>,
