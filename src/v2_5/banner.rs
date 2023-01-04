@@ -47,6 +47,10 @@ pub struct Banner {
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub btype: Vec<BannerAdType>,
 
+    /// Blocked creative attributes.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub battr: Vec<u64>,
+
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_utils::Ext>,
 }
