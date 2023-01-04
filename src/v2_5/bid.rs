@@ -3,8 +3,9 @@ use serde_utils;
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct Bid {
+    #[serde(deserialize_with = "serde_utils::anything_to_string")]
     pub id: String,
-    #[serde(rename = "impid")]
+    #[serde(rename = "impid", deserialize_with = "serde_utils::anything_to_string")]
     pub imp_id: String,
     pub price: f64,
     #[serde(skip_serializing_if = "Option::is_none")]

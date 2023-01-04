@@ -15,8 +15,8 @@ pub struct User {
     #[serde(rename = "buyeruid", skip_serializing_if = "Option::is_none")]
     pub buyer_uid: Option<String>,
     // This object used by publishers to pass additional attributes about the user or content.
-    #[serde(skip_serializing_if = "Vec::is_empty")]
-    pub data: Vec<Data>,
+    #[serde(skip_serializing_if = "serde_utils::is_none_or_empty")]
+    pub data: Option<Vec<Data>>,
     // The User Ext Object, which is used to indicate requests that contain certain user identifiers and are subject to GDPR regulations.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ext: Option<serde_utils::Ext>,

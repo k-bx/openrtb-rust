@@ -87,7 +87,8 @@ pub struct BidRequest {
     // Maximum time in milliseconds the exchange allows for bids to
     // be received including Internet latency to avoid timeout. This
     // value supersedes any a priori guidance from the exchange.
-    pub tmax: u64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tmax: Option<u64>,
 
     // White list of buyer seats (e.g., advertisers, agencies) allowed
     // to bid on this impression. IDs of seats and knowledge of the
@@ -176,7 +177,7 @@ impl BidRequest {
             user: None,
             test: false,
             auction_type: AuctionType::FirstPrice,
-            tmax: 0,
+            tmax: Some(0),
             seat_whitelist: vec![],
             seat_blocklist: vec![],
             all_imps: false,
