@@ -22,15 +22,15 @@ impl<'de> Visitor<'de> for BoolVisitor {
     }
 
     fn visit_bool<E>(self, value: bool) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value)
     }
 
     fn visit_u8<E>(self, value: u8) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         match value {
             0 => Ok(false),
@@ -40,8 +40,8 @@ impl<'de> Visitor<'de> for BoolVisitor {
     }
 
     fn visit_u16<E>(self, value: u16) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         match value {
             0 => Ok(false),
@@ -51,8 +51,8 @@ impl<'de> Visitor<'de> for BoolVisitor {
     }
 
     fn visit_u32<E>(self, value: u32) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         match value {
             0 => Ok(false),
@@ -62,8 +62,8 @@ impl<'de> Visitor<'de> for BoolVisitor {
     }
 
     fn visit_u64<E>(self, value: u64) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         match value {
             0 => Ok(false),
@@ -83,100 +83,100 @@ impl<'de> Visitor<'de> for StringVisitor {
     }
 
     fn visit_bool<E>(self, value: bool) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value.to_string())
     }
 
     fn visit_u8<E>(self, value: u8) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value.to_string())
     }
 
     fn visit_u16<E>(self, value: u16) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value.to_string())
     }
 
     fn visit_u32<E>(self, value: u32) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value.to_string())
     }
 
     fn visit_u64<E>(self, value: u64) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value.to_string())
     }
 
     fn visit_i8<E>(self, value: i8) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value.to_string())
     }
 
     fn visit_i16<E>(self, value: i16) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value.to_string())
     }
 
     fn visit_i32<E>(self, value: i32) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value.to_string())
     }
 
     fn visit_i64<E>(self, value: i64) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value.to_string())
     }
 
     fn visit_char<E>(self, value: char) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value.to_string())
     }
 
     fn visit_str<E>(self, value: &str) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value.to_string())
     }
 
     fn visit_string<E>(self, value: String) -> Result<Self::Value, E>
-        where
-            E: serde::de::Error,
+    where
+        E: serde::de::Error,
     {
         Ok(value)
     }
 }
 
 pub fn bool_to_u8<S>(x: &bool, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::Serializer,
+where
+    S: serde::Serializer,
 {
     serializer.serialize_u8(*x as u8)
 }
 
 pub fn u8_to_bool<'de, D>(deserializer: D) -> Result<bool, D::Error>
-    where
-        D: serde::Deserializer<'de>,
+where
+    D: serde::Deserializer<'de>,
 {
     deserializer.deserialize_any(BoolVisitor)
 }
@@ -190,8 +190,8 @@ pub fn is_false(x: &bool) -> bool {
 }
 
 pub fn mbool_to_u8<S>(mx: &Option<bool>, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::Serializer,
+where
+    S: serde::Serializer,
 {
     match mx {
         None => serializer.serialize_none(),
@@ -200,8 +200,8 @@ pub fn mbool_to_u8<S>(mx: &Option<bool>, serializer: S) -> Result<S::Ok, S::Erro
 }
 
 pub fn u8_to_mbool<'de, D>(deserializer: D) -> Result<Option<bool>, D::Error>
-    where
-        D: serde::Deserializer<'de>,
+where
+    D: serde::Deserializer<'de>,
 {
     match deserializer.deserialize_any(BoolVisitor) {
         Ok(value) => Ok(Some(value)),
@@ -218,8 +218,8 @@ pub fn is_none_or_empty<T>(vec: &Option<Vec<T>>) -> bool {
 }
 
 pub fn anything_to_string<'de, D>(deserializer: D) -> Result<String, D::Error>
-    where
-        D: serde::Deserializer<'de>,
+where
+    D: serde::Deserializer<'de>,
 {
     deserializer.deserialize_any(StringVisitor)
 }
