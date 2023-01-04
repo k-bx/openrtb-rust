@@ -79,7 +79,6 @@ pub struct Imp {
 
     // TODO: add properly
     // iframebuster
-
     /// Advisory as to the number of seconds that may elapse
     /// between the auction and the actual impression.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -112,6 +111,7 @@ mod tests {
             bid_floor_cur: None,
             secure: None,
             ext: None,
+            exp: None,
         };
 
         let expected = r#"{"id":"1234"}"#;

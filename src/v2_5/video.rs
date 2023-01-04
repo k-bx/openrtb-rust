@@ -28,6 +28,35 @@ pub struct Video {
     /// Height of the video player in device independent pixels (DIPS).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub h: Option<u32>,
+    /// #### Placement type for the impression:
+    ///
+    /// - 1: In-Stream
+    ///
+    ///   Played before, during or after the streaming video content that the consumer has requested
+    ///   (e.g., Pre-roll, Mid-roll, Post-roll).
+    /// ***
+    /// - 2: In-Banner
+    ///
+    ///   Exists within a web banner that leverages the banner space to deliver a video experience as
+    ///   opposed to another static or rich media format. The format relies on the existence of display
+    ///   ad inventory on the page for its delivery.
+    /// ***
+    /// - 3: In-Article
+    ///
+    ///   Loads and plays dynamically between paragraphs of editorial content; existing as a standalone
+    ///   branded message.
+    /// ***
+    /// - 4: In-Feed
+    ///
+    ///   Found in content, social, or product feeds.
+    /// ***
+    /// - 5: Interstitial/Slider/Floating
+    ///
+    ///   Covers the entire or a portion of screen area, but is always on screen while displayed (i.e.
+    ///   cannot be scrolled out of view). Note that a full-screen interstitial (e.g., in mobile) can be
+    ///   distinguished from a floating/slider unit by the `imp.instl` field
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub placement: Option<u32>,
     /// Indicates if the impression must be linear, nonlinear, etc.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub linearity: Option<u32>,
@@ -61,6 +90,7 @@ fn serialization_skip_fields() {
         protocols: vec![],
         w: None,
         h: None,
+        placement: None,
         linearity: None,
         battr: vec![],
         minbitrate: None,
