@@ -177,7 +177,7 @@ impl BidRequest {
             user: None,
             test: false,
             auction_type: AuctionType::FirstPrice,
-            tmax: Some(0),
+            tmax: None,
             seat_whitelist: vec![],
             seat_blocklist: vec![],
             all_imps: false,
@@ -240,7 +240,7 @@ mod tests {
             user: None,
             test: false,
             auction_type: AuctionType::FirstPrice,
-            tmax: 0,
+            tmax: None,
             seat_whitelist: vec![],
             seat_blocklist: vec![],
             all_imps: false,
@@ -254,7 +254,7 @@ mod tests {
             ext: None,
         };
 
-        let expected = r#"{"id":"1234","imp":[],"at":1,"tmax":0}"#;
+        let expected = r#"{"id":"1234","imp":[],"at":1}"#;
         let serialized = serde_json::to_string(&b).unwrap();
 
         assert_eq!(expected, serialized)
@@ -265,8 +265,7 @@ mod tests {
         let serialized = r#"{
             "id": "1234",
             "imp": [],
-            "at": 2,
-            "tmax": 0
+            "at": 2
         }"#;
 
         let res = serde_json::from_str(serialized);
@@ -285,7 +284,7 @@ mod tests {
             user: None,
             test: false,
             auction_type: AuctionType::SecondPricePlus,
-            tmax: 0,
+            tmax: None,
             seat_whitelist: vec![],
             seat_blocklist: vec![],
             all_imps: false,
