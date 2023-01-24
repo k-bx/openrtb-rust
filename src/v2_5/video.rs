@@ -71,8 +71,13 @@ pub struct Video {
     pub maxbitrate: Option<u32>,
     /// Indicates if letter-boxing of 4:3 content into
     /// a 16:9 window is allowed, where 0 = no, 1 = yes.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub boxingallowed: Option<u32>,
+    #[serde(
+        default,
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "serde_utils::mbool_to_u8",
+        deserialize_with = "serde_utils::u8_to_mbool"
+    )]
+    pub boxingallowed: Option<bool>,
     /// Playback methods that may be in use.
     /// If none are specified, any method may be used.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]

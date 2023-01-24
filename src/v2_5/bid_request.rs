@@ -87,7 +87,8 @@ pub struct BidRequest {
     // Maximum time in milliseconds the exchange allows for bids to
     // be received including Internet latency to avoid timeout. This
     // value supersedes any a priori guidance from the exchange.
-    pub tmax: u64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tmax: Option<u64>,
 
     // White list of buyer seats (e.g., advertisers, agencies) allowed
     // to bid on this impression. IDs of seats and knowledge of the
@@ -176,7 +177,7 @@ impl BidRequest {
             user: None,
             test: false,
             auction_type: AuctionType::FirstPrice,
-            tmax: 0,
+            tmax: None,
             seat_whitelist: vec![],
             seat_blocklist: vec![],
             all_imps: false,
@@ -239,7 +240,7 @@ mod tests {
             user: None,
             test: false,
             auction_type: AuctionType::FirstPrice,
-            tmax: 0,
+            tmax: None,
             seat_whitelist: vec![],
             seat_blocklist: vec![],
             all_imps: false,
@@ -253,7 +254,7 @@ mod tests {
             ext: None,
         };
 
-        let expected = r#"{"id":"1234","imp":[],"at":1,"tmax":0}"#;
+        let expected = r#"{"id":"1234","imp":[],"at":1}"#;
         let serialized = serde_json::to_string(&b).unwrap();
 
         assert_eq!(expected, serialized)
@@ -264,8 +265,7 @@ mod tests {
         let serialized = r#"{
             "id": "1234",
             "imp": [],
-            "at": 2,
-            "tmax": 0
+            "at": 2
         }"#;
 
         let res = serde_json::from_str(serialized);
@@ -284,7 +284,7 @@ mod tests {
             user: None,
             test: false,
             auction_type: AuctionType::SecondPricePlus,
-            tmax: 0,
+            tmax: None,
             seat_whitelist: vec![],
             seat_blocklist: vec![],
             all_imps: false,
